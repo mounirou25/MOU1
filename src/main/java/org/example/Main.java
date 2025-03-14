@@ -19,11 +19,11 @@ public class Main {
                 {' ', '|', ' ', '|', ' '}};
         System.out.println("Enter number (1 TO 9)");
         Scanner input = new Scanner(System.in);
-        int mou = input.nextInt();
+        int player = input.nextInt();
 
-        System.out.println(mou);
+        System.out.println(player);
 
-        plan(gameboat , mou,"player");
+        plan(gameboat , player,"player");
 //for cpu to play its position
         Random rand = new Random();
         int  Cpumou = rand.nextInt(9)+ 1;
