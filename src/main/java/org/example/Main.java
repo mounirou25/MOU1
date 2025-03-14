@@ -1,3 +1,5 @@
+import javax.swing.*;
+import java.util.Random;
 import java.util.concurrent.Callable;
 import java.util.function.DoubleToIntFunction;
 
@@ -9,59 +11,77 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Enter number (1 TO 9)");
-Scanner input = new Scanner(System.in);
-int player = input.nextInt();
 
         char[][] gameboat = {{' ', '|', ' ', '|', ' '},
                 {'+', '-', '-', '+', '-'},
                 {' ', '|', ' ', '|', ' '},
                 {'+', '-', '+', '-', '+'},
                 {' ', '|', ' ', '|', ' '}};
+        System.out.println("Enter number (1 TO 9)");
+        Scanner input = new Scanner(System.in);
+        int mou = input.nextInt();
 
-        switch (player) {
-            case 1:
-                gameboat[0][1] = 'X';
-                break;
-            case 2:
-                gameboat[0][2] = 'X';
-                break;
-            case 3:
-                gameboat[0][4] = 'X';
-                break;
-            case 4:
-                gameboat[2][0] = 'X';
-                break;
-            case 5:
-                gameboat[2][2] = 'X';
-                break;
-            case 6:
-                gameboat[2][4] = 'X';
-                break;
-            case 7:
-                gameboat[4][0] = 'X';
-                break;
-            case 8:
-                gameboat[4][2] = 'X';
-                break;
-            case 9:
-                gameboat[4][4] = 'X';
-                break;
-        }
+        System.out.println(mou);
 
-        printGameBaot(gameboat);
+        plan(gameboat , mou,"player");
+//for cpu to play its position
+        Random rand = new Random();
+        int  Cpumou = rand.nextInt(9)+ 1;
+        plan(gameboat,Cpumou,"Cpu");
+
+   printGameBaot(gameboat);
 
 
-            }
 
-
+    }
+            //
     public static void printGameBaot (char [][] gameboat){
         for (char[] row : gameboat) {
             for (char c : row)
                 System.out.print(c);
             System.out.println();
         }
-    }}
+    } public static void plan( char [][]gameBoat , int mou, String User  ){
+        char Symbol = ' ';
+        if (User.equals("player")){
+         Symbol= 'X';
+        } else if (User.equals("Cpu")) {
+            Symbol= 'O';
+        }
+        switch (mou) {
+            case 1:
+                gameBoat[0][1] = Symbol;
+                break;
+            case 2:
+                gameBoat[0][2] = Symbol;
+                break;
+            case 3:
+                gameBoat[0][4] = Symbol;
+                break;
+            case 4:
+                gameBoat[2][0] = Symbol;
+                break;
+            case 5:
+                gameBoat[2][2] = Symbol;
+                break;
+            case 6:
+                gameBoat[2][4] = Symbol;
+                break;
+            case 7:
+                gameBoat[4][0] = Symbol;
+                break;
+            case 8:
+                gameBoat[4][2] = Symbol;
+                break;
+            case 9:
+                gameBoat[4][4] = Symbol;
+                break;
+        }
+
+
+    }
+
+}
 
 
 
